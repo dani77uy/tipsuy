@@ -1,0 +1,22 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>TIPS UY (Get team)</title>
+  <!--/*/ <th:block th:include="../fragments/general.html :: headerfiles">
+        </th:block> /*/-->
+</head>
+
+<body>
+<header th:insert="fragments/general.html :: header"> </header>
+
+<div th:switch="${team}">
+  <h2 th:case="null">No team selected!</h2>
+  <h2 th:case="*" th:text="|Showing ${team.name} details|"></h2>
+</div>
+
+<div th:replace="fragments/general.html :: footer"></div>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles">
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div style="background-color: #007bff;" th:fragment="header">
+  <h1 class="h1">TIPS UY</h1>
+</div>
+
+<footer th:fragment="footer">
+  <div style="background-color: #007bff;">
+    <a th:href="@{/fragments}">Fragments Index</a> |
+    <a th:href="@{/team}">Team</a> |
+    <a th:href="@{/player}">Player</a> |
+    <a th:href="@{/tournament}">Tournament</a>
+  </div>
+</footer>
+
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

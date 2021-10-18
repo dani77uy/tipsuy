@@ -1,0 +1,46 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>TIPS UY (List teams)</title>
+  <!--/*/ <th:block th:include="../fragments/general.html :: headerfiles">
+        </th:block> /*/-->
+</head>
+
+<body>
+<header th:insert="fragments/general.html :: header"></header>
+<div class="container" th:switch="${teams}">
+  <h2 th:case="null">No teams yet!</h2>
+  <div th:case="*">
+    <h2>Teams</h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Twitter</th>
+        <th scope="col">Country</th>
+        <th scope="col">Hashtag</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="team : ${teams}">
+        <th scope="row"><a th:href="@{/team/get/{id}(id=${team.id})}" th:text="${team.id}" target="_blank"></a></th>
+        <td th:text="${team.name}"></td>
+        <td>
+          <a th:href="@{'https://twitter.com/' + ${team.twitterAccount}}" th:text="${team.showTwitterAccountWithAt()}" target="_blank"></a>
+        </td>
+        <td th:text="${team.country.name}"></td>
+        <td th:text="${team.hashtag1}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div th:replace="fragments/general.html :: footer"></div>
+</body>
+
+</html>
+
