@@ -3,13 +3,13 @@ package me.tipsuy.twitterpostsweb.dao;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import me.tipsuy.twitterpostsweb.model.web.TeamBean;
+import me.tipsuy.twitterpostsweb.model.web.FeedBean;
 
 /**
  * @author Daniel Baharian
- * @since 11 oct. 2021
+ * @since 23 oct. 2021
  */
 @Repository
-public interface TeamRepository extends CrudRepository<TeamBean, Long> {
+public interface FeedRepository extends CrudRepository<FeedBean, Long> {
 
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://search.yahoo.com/mrss/"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="group">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="title" type="xs:string"/>
+                <xs:element name="content">
+                    <xs:complexType>
+                        <xs:attribute name="url" type="xs:string" use="required"/>
+                        <xs:attribute name="type" type="xs:string" use="required"/>
+                        <xs:attribute name="width" type="xs:unsignedShort" use="required"/>
+                        <xs:attribute name="height" type="xs:unsignedShort" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="thumbnail">
+                    <xs:complexType>
+                        <xs:attribute name="url" type="xs:string" use="required"/>
+                        <xs:attribute name="width" type="xs:unsignedShort" use="required"/>
+                        <xs:attribute name="height" type="xs:unsignedShort" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="description" type="xs:string"/>
+                <xs:element name="community">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="starRating">
+                                <xs:complexType>
+                                    <xs:attribute name="count" type="xs:unsignedShort" use="required"/>
+                                    <xs:attribute name="average" type="xs:decimal" use="required"/>
+                                    <xs:attribute name="min" type="xs:unsignedByte" use="required"/>
+                                    <xs:attribute name="max" type="xs:unsignedByte" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="statistics">
+                                <xs:complexType>
+                                    <xs:attribute name="views" type="xs:unsignedInt" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

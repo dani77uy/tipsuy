@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.youtube.com/xml/schemas/2015"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="channelId" type="xs:string"/>
+    <xs:element name="videoId" type="xs:string"/>
+</xs:schema>

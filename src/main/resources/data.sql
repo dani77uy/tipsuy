@@ -1,5 +1,6 @@
 create sequence element_seq;
 create sequence post_seq;
+create sequence feed_seq;
 
 create table country
 (
@@ -68,6 +69,33 @@ create table twitter_post
     constraint fk_twpo_tourn foreign key (tournament_id) references tournament (id),
     constraint fk_twpo_hteam foreign key (home_team) references team (id),
     constraint fk_twpo_ateam foreign key (away_team) references team (id)
+);
+
+create table feed
+(
+    id bigint default feed_seq.nextval,
+    channel_name varchar2(20 char) not null,
+    channel_url varchar2(200 char) not null,
+    type varchar2(10 char) not null,
+    constraint pk_feed primary key (id),
+    constraint uq_feed_cn unique (channel_name),
+    constraint uq_feed_cu unique (channel_url),
+    constraint ck_feed_type check (type in('YouTube','Twitter','RSS', 'Instagram'))
+);
+
+create table entry_content_posted
+(
+    id_feed bigint not null,
+    entry_link_id varchar2(200 char) not null,
+    status smallint not null,
+    feed_datetime_raised datetime not null,
+    feed_date_created integer not null,
+    feed_time_created integer not null,
+    feed_date_edited integer default 0 null,
+    feed_time_edited integer default 0 null,
+    constraint pk_ecp primary key (id_feed,entry_link_id,status),
+    constraint fk_ecp_feed foreign key (id_feed) references feed(id),
+    constraint ck_ecp_stat check (status in(0,1,2,3,4,5))
 );
 
 insert into country(name, alias, iso, hashtag) values ('Argentina','ar','ARG','Argentina');

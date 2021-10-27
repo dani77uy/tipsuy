@@ -1,7 +1,11 @@
 package me.tipsuy.twitterpostsweb.util;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
+
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -12,6 +16,18 @@ import org.apache.commons.lang3.StringUtils;
 public class DatetimeUtil {
 
    private DatetimeUtil() {
+   }
+
+   public static int dateNow() {
+      final var now = new Date();
+      final var sdf = new SimpleDateFormat("yyyyMMdd");
+      return Integer.parseInt(sdf.format(now));
+   }
+
+   public static int timeNow() {
+      final var now = new Date();
+      final var sdf = new SimpleDateFormat("HHmmss");
+      return Integer.parseInt(sdf.format(now));
    }
 
    public static LocalDate convertToLocalDate(int date) {
@@ -38,8 +54,20 @@ public class DatetimeUtil {
 
    public static String convertTimeToString(int time) {
       final var localTime = convertToLocalTime(time);
-      return new StringBuilder(Integer.toString(localTime.getHour()))
-            .append(":").append(localTime.getHour())
-            .toString();
+      return new StringBuilder(Integer.toString(localTime.getHour())).append(":").append(localTime.getHour()).toString();
+   }
+
+   public static int getDateFromXMLGregorianCalendar(XMLGregorianCalendar xmlGregorianCalendar) {
+      final var day = xmlGregorianCalendar.getDay();
+      final var year = xmlGregorianCalendar.getYear();
+      final var month = xmlGregorianCalendar.getMonth();
+      return year * 10000 + month * 100 + day;
+   }
+
+   public static int getTimeFromXMLGregorianCalendar(XMLGregorianCalendar xmlGregorianCalendar) {
+      final var sec = xmlGregorianCalendar.getSecond();
+      final var min = xmlGregorianCalendar.getMinute();
+      final var hour = xmlGregorianCalendar.getHour();
+      return hour * 10000 + min * 100 + sec;
    }
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/"
+           elementFormDefault="qualified" targetNamespace="http://www.w3.org/2005/Atom" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="schema1.xsd" namespace="http://www.youtube.com/xml/schemas/2015" />
+    <xs:import schemaLocation="schema2.xsd" namespace="http://search.yahoo.com/mrss/" />
+    <xs:element name="feed">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="link">
+                    <xs:complexType>
+                        <xs:attribute name="rel" type="xs:string" use="required" />
+                        <xs:attribute name="href" type="xs:string" use="required" />
+                    </xs:complexType>
+                </xs:element>
+                <xs:element type="xs:string" name="id"/>
+                <xs:element ref="yt:channelId"/>
+                <xs:element type="xs:string" name="title"/>
+                <xs:element name="author">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="name" type="xs:string" />
+                            <xs:element name="uri" type="xs:string" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element type="xs:dateTime" name="published"/>
+                <xs:element maxOccurs="unbounded" name="entry">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="id"/>
+                            <xs:element ref="yt:videoId"/>
+                            <xs:element ref="yt:channelId"/>
+                            <xs:element type="xs:string" name="title"/>
+                            <xs:element name="link">
+                                <xs:complexType>
+                                    <xs:attribute name="rel" type="xs:string" use="required" />
+                                    <xs:attribute name="href" type="xs:string" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="author">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="name" type="xs:string" />
+                                        <xs:element name="uri" type="xs:string" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element type="xs:dateTime" name="published"/>
+                            <xs:element type="xs:dateTime" name="updated"/>
+                            <xs:element ref="media:group"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

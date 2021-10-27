@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import me.tipsuy.twitterpostsweb.dao.TeamRepository;
+import me.tipsuy.twitterpostsweb.model.exception.TwitterPostException;
+import me.tipsuy.twitterpostsweb.service.TeamService;
 
 /**
  * @author Daniel Baharian
@@ -18,18 +20,18 @@ import me.tipsuy.twitterpostsweb.dao.TeamRepository;
 public class TeamController {
 
    @Autowired
-   TeamRepository teamRepository;
+   private TeamService teamService;
 
    @GetMapping("/get/{id}")
-   public String get(@PathVariable long id, Model model) {
-      final var teamBean = teamRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid team id: " + id));
+   public String get(@PathVariable long id, Model model) throws TwitterPostException {
+      final var teamBean = teamService.findById(id); //.orElseThrow(() -> new IllegalArgumentException("Invalid team id: " + id));
       model.addAttribute("team", teamBean);
       return "get";
    }
 
    @GetMapping("/index")
    public String showTeamList(Model model) {
-      model.addAttribute("teams", teamRepository.findAll());
+      model.addAttribute("teams", teamService.findAll());
       return "index";
    }
 

@@ -1,4 +1,4 @@
-package me.tipsuy.twitterpostsweb.model;
+package me.tipsuy.twitterpostsweb.model.web;
 
 import java.util.Objects;
 import java.util.Set;
